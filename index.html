@@ -11,21 +11,37 @@
       }
 
       body {
-        background-color: #eee;
+        background-color: skyblue;
       }
       .container {
-        min-width: 620px;
-        max-width: 750px;
+        position: relative;
+        min-width: 720px;
+        max-width: 1050px;
         margin: 0 auto;
       }
       .header {
         text-align: center;
         margin: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .header > #INPUT_BOX_2 {
+        height: 50px;
+      }
+      input {
+        margin: 5px;
+      }
+      button {
+        width: 50px;
+        margin-top: 8px;
       }
       .span-box {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 20px;
+        color: brown;
+        font-size: 25px;
+        font-weight: bold;
       }
       .box-container {
         margin: 0 auto;
@@ -33,10 +49,12 @@
         grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
       }
+
       .box {
-        width: 200px;
-        min-height: 800px;
-        border: 1px solid black;
+        width: 300px;
+        min-height: 500px;
+        border: 3px solid purple;
+        margin: 10px;
         padding: 5px;
         border-radius: 5px;
         background-color: white;
@@ -59,8 +77,24 @@
   <body>
     <section class="container">
       <section class="header">
-        <input placeholder="Todo" />
-        <button>Click</button><br />
+        <input
+          type="title"
+          class="input1"
+          id="INPUT_BOX_1"
+          name="INPUT_BOX_1"
+          placeholder="제목"
+          onkeyup="fnCheckLength(this, 20);"
+        />
+        <input
+          type="content"
+          class="input2"
+          id="INPUT_BOX_2"
+          name="INPUT_BOX_2"
+          placeholder="할일"
+          onkeyup="fnCheckLength(this, 200);"
+        />
+        <input class="input3" placeholder="URL" />
+        <button>저장</button><br />
         <div class="span-box">
           <span>TO DO</span>
           <span>Doing</span>
