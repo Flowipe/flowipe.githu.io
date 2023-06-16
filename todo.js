@@ -1,43 +1,72 @@
 const colors = [
   //18
-  "#ef5777",
-  "#575fcf",
-  "#4bcffa",
-  "#34e7e4",
-  "#0be881",
-  "#f53b57",
-  "#3c40c6",
-  "#0fbcf9",
-  "#00d8d6",
-  "#05c46b",
-  "#ffc048",
-  "#ffdd59",
-  "#ff5e57",
-  "#d2dae2",
-  "#485460",
-  "#ffa801",
+  // "#ef5777",
+  // "#575fcf",
+  // "#4bcffa",
+  // "#34e7e4",
+  // "#0be881",
+  // "#f53b57",
+  // "#3c40c6",
+  // "#0fbcf9",
+  // "#00d8d6",
+  // "#05c46b",
+  // "#ffc048",
+  // "#ffdd59",
+  // "#ff5e57",
+  // "#d2dae2",
+  // "#485460",
+  // "#ffa801",
   "#ffd32a",
-  "#ff3f34",
+  // "#ff3f3",
 ];
 
 let dragTarget = {};
-
-// display();
 
 function 색추출기(colors) {
   const 랜덤값 = Math.floor(Math.random() * colors.length); // 0~17
   return colors[랜덤값];
 }
 
+function fnCheckLength(msg, maxLength) {
+  if (msg.value.length > maxLength) {
+    msg.value = msg.value.substr(0, maxLength);
+  }
+}
+
 document.querySelector("button").addEventListener("click", (e) => {
   const text = document.querySelector("input").value;
+  const maxLength = 100; // 최대 길이 설정
 
   // local storage 저장
   const todo객체 = {};
-  todo객체.text = document.querySelector("input").value;
+  todo객체.title = document.querySelector(".input1").value;
+  todo객체.content = document.querySelector(".input2").value;
+  todo객체.url = document.querySelector(".input3").value;
+  todo객체.color = "#ffd32a";
   todo객체.category = "todo";
   todo객체.id = Date.now();
+  var d = new Date();
+  var hr = d.getHours();
+  var min = d.getMinutes();
+  var sec = d.getSeconds();
+  var time = d.toLocaleTimeString();
+  var date = d.toLocaleDateString();
+  var datetime = d.toLocaleString();
+  var formatted = `${d.getFullYear()}-${
+    d.getMonth() + 1
+  }-${d.getDate()} ${hr}:${min}:${sec}`;
+
+  console.log("시:", hr);
+  console.log("분:", min);
+  console.log("초:", sec);
+  console.log("현재 시간:", time);
+  console.log("현재 날짜:", date);
+  console.log("날짜&시간:", datetime);
+  console.log("내맘대로:", formatted);
   localStorage.setItem(todo객체.id, JSON.stringify(todo객체));
+  console.log(todo객체);
+
+  location.href = "https://www.naver.com/";
 
   // 새로운 태그 생성
   const newTag = createTag(text, todo객체.id);
